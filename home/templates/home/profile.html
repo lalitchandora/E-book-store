@@ -1,0 +1,23 @@
+{% extends "home/base.html" %}
+{% block content %}
+	<div class="container" style="width: 800px;">
+		<div class="card p-5 border-dark">
+			<div class="row ">
+				<div class="col"></div>
+				<div class="col">
+					<img src="{{ more_details.user_image.url }}" class="card-img-top" style="width: 220px; height: 220px; border-radius: 50%;">
+				</div>
+				<div class="col"></div>
+			</div>
+			<div class="card-text pt-3">
+				<span class="lead">Username:</span><span class="lead" style="color: blueviolet;"> {{ basic_info.username }}</span>
+				<li class="dropdown-divider border-dark"></li>
+				<span class="lead">Email:</span><span class="lead" style="color: blueviolet;"> {{ basic_info.email }}</span>
+				
+				<li class="dropdown-divider border-dark"></li>
+				<span class="lead">Address</span><span class="lead" style="color: blueviolet;"> {{ more_details.address }}</span>
+			</div>
+		</div>
+	</div>
+	
+{% endblock content %}

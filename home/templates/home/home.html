@@ -1,0 +1,153 @@
+{% extends "home/base.html" %}
+{% block content %}
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron jumbotron-fluid">
+                    
+                    <h1 class="display-3 text-center">FLAT SALE!!!</h1>
+                    <h1 class="display-4 text-center">20% Discount on all books.</h1>
+                    <h2 class="display-4 text-center">BUY NOW!</h2>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-3 border mx-2 p-4">
+                <div class="card card-body bg-light">
+                    <h3 class="card-title">All Genres</h3>
+                    <div class="dropdown-divider border-dark"></div>
+                    <div>
+                        <a href="genre/Adventure" class="text-decoration-none text-dark link-remove-decoration">Adventure</a>
+                        <a href="genre/Autobiography" class="text-decoration-none text-dark link-remove-decoration">Autobiography</a>
+                        <a href="genre/Fiction" class="text-decoration-none text-dark link-remove-decoration">Fiction</a>
+                        <a href="genre/Non-fiction" class="text-decoration-none text-dark link-remove-decoration">Non-fiction</a>
+                        <a href="genre/Science-fiction" class="text-decoration-none text-dark link-remove-decoration">Science-fiction</a>
+                        <span id="dots"></span>
+                        <span id="more" style="display: none;">
+                            <a href="genre/Thriller" class="text-decoration-none text-dark link-remove-decoration">Thriller</a>
+                            <a href="genre/Mystery" class="text-decoration-none text-dark link-remove-decoration">Mystery</a>
+                            <a href="genre/Biography" class="text-decoration-none text-dark link-remove-decoration">Biography</a>
+                            <a href="genre/Short-Story" class="text-decoration-none text-dark link-remove-decoration">Short-Story</a>
+                            <a href="genre/Paranormal" class="text-decoration-none text-dark link-remove-decoration">Paranormal</a>
+                            <a href="genre/Romance" class="text-decoration-none text-dark link-remove-decoration">Romance</a>
+                            <a href="genre/Encyclopedia" class="text-decoration-none text-dark link-remove-decoration">Encyclopedia</a>
+                            <a href="genre/Science" class="text-decoration-none text-dark link-remove-decoration">Science</a>
+                            <a href="genre/Self-Help" class="text-decoration-none text-dark link-remove-decoration">Self-Help</a>
+                            <a href="genre/Math" class="text-decoration-none text-dark link-remove-decoration">Math</a>
+                            <a href="genre/Poetry" class="text-decoration-none text-dark link-remove-decoration">Poetry</a>
+                            <a href="genre/Travel" class="text-decoration-none text-dark link-remove-decoration">Travel</a>
+                        </span>
+                    </div>
+                    <button class="btn btn-light" onclick="myFunction()" id="myBtn">Show More</button>
+                    <h3 class="card-title mt-2">Filter by Price</h3>
+                    <div class="dropdown-divider border-dark"></div>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group" style="width: 100px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">₹</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Min" aria-label="Min" aria-describedby="basic-addon1" style="width: 30px;">
+                                </div>  
+                            </div>
+                            <div class="col">
+                                <h4 class="">to</h4>
+                            </div>
+                            <div class="col">
+                                <div class="input-group" style="width: 100px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">₹</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Max" aria-label="Max" aria-describedby="basic-addon1" style="width: 30px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <button class="btn btn-outline-dark justify-content-center" type="submit">Filter</button>    
+                            </div>
+                            <div class="col"></div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col border  p-4">
+                <!-- The main content section -->
+                <!-- Add the carousel for displaying horizontal list -->
+                
+                    <h1 class="display-4">
+                        Top recommendations
+                        <i class="fas fa-arrow-right"></i>
+                    </h1>
+                    <div class="row">
+                        {% for book in books %}
+                            <div class="col-4">
+                                
+                                <div class="card" style="width: 18rem; height: 27rem;">
+                                    <a href="{% url 'book_info_page' book.id %}" style="text-decoration: none; color: black;">
+                                        <div class="card-body">
+                                            <img src="{{ book.book_image.url }}" class="card-img-top" alt="Image Not Displayed" style="height: 18rem;">
+                                            <h5 class="card-title">{{ book.title }}</h5>
+                                            <p class="card-text">₹ {{ book.price }}<br>{{ book.language }}, {{ book.bookformat }}</p>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}    
+                    </div>
+                    <h1 class="display-4">
+                        Top Adventure Books
+                        <i class="fas fa-arrow-right"></i>
+                    </h1>
+                    <div class="row">
+                        {% for book in adventure %}
+                            <div class="col-4">
+                                
+                                <div class="card" style="width: 18rem; height: 27rem;">
+                                    <a href="{% url 'book_info_page' book.id %}" style="text-decoration: none; color: black;">
+                                        <div class="card-body">
+                                            <img src="{{ book.book_image.url }}" class="card-img-top" alt="Image Not Displayed" style="height: 18rem;">
+                                            <h5 class="card-title">{{ book.title }}</h5>
+                                            <p class="card-text">₹ {{ book.price }}<br>{{ book.language }}, {{ book.bookformat }}</p>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}    
+                    </div>
+
+                    
+                    <h1 class="display-4">
+                        Top Self-help Books
+                        <i class="fas fa-arrow-right"></i>
+                    </h1>
+                    <div class="row">
+                        {% for book in selfhelp %}
+                            <div class="col-4">
+                                
+                                <div class="card" style="width: 18rem; height: 27rem;">
+                                    <a href="{% url 'book_info_page' book.id %}" style="text-decoration: none; color: black;">
+                                        <div class="card-body">
+                                            <img src="{{ book.book_image.url }}" class="card-img-top" alt="Image Not Displayed" style="height: 18rem;">
+                                            <h5 class="card-title">{{ book.title }}</h5>
+                                            <p class="card-text">₹ {{ book.price }}<br>{{ book.language }}, {{ book.bookformat }}</p>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}    
+                    </div>
+            </div>
+        </div>
+    </div> 
+{% endblock content %}

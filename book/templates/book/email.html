@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+<body>
+    <h2 style = "text-align: center;">Online Book Store</h2>
+    <h3>Your order will be delivered in 2 working days</h3>
+    <h3>Order Date: {{ time }}</h3>
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Item Price</th>
+        </tr>
+        {% for a in bill %}
+            <tr>
+                {% if a.book_title.title %}
+                    <td>{{ a.book_title.title }} </td>
+                {% else %}
+                    <td>{{ a.title }} </td>
+                {% endif %}
+
+                
+                {% if a.book_title.price %}
+                    <td>{{ a.book_title.price }} </td>
+                {% else %}
+                    <td>{{ a.price }}</td>
+                {% endif %}
+                </tr>
+        {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td>{{ sum }}</td>
+        </tr>
+    </table> 
+    <h2>Happy Reading!!!</h2>   
+</body>
+</html>
+    

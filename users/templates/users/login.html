@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+	<div class="container" style="width: 800px;">
+		<p class="text-dark" style="font-size: 30px;" >Sign In Page  <i class="fas fa-sign-in-alt"></i></p>
+		<div class="card">
+			<div class="card-body">
+				<form method="POST">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						{{ form|crispy }}
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-info" type="submit">Login</button>
+					</div>
+				</form>
+				<div class="border-top pt-3">
+					<small class="text-muted">
+						Need an account ? <a href=" {% url 'register' %} ">Register now!</a>
+					</small>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

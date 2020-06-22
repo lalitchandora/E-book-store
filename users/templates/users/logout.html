@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+	<div class="container" style="width: 800px;">
+		<p class="text-dark" style="font-size: 30px;">Sign In Page  <i class="fas fa-sign-in-alt"></i></p>
+		<div class="card">
+			<div class="card-body">
+				<div class="pt-3">
+					<small class="text-muted">
+						You have been logged out. Click <a href=" {% url 'login' %} ">here</a> to log in again. 
+					</small>
+				</div>
+			</div>
+		</div>
+		<p style="padding-bottom: 220px;"></p>
+	</div>
+{% endblock content %}

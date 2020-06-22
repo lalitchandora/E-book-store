@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <script src="https://kit.fontawesome.com/9726552b3a.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <title>Online Book Store</title>
+        <script type="text/javascript">
+            function myFunction() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("myBtn");
+                if (dots.style.display === "none") {
+                    dots.style.display = "inline-block";
+                    btnText.innerHTML = "Show More";
+                    moreText.style.display = "none";
+                } else {
+                    dots.style.display = "none";
+                    btnText.innerHTML = "Show less";
+                    moreText.style.display = "block";
+                }
+            }
+        </script>
+        <style type="text/css">
+            .link-remove-decoration{
+                display: block;
+                padding: 5px;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow p-3">
+              
+            <a class="navbar-brand" href="{% url 'home-page' %}">Online Book Store</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                
+                 
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            
+                <div class="container">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active px-2">
+                            <a class="nav-link" href="{% url 'home-page' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown px-2">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                More
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if user.is_authenticated %}
+                                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                    <a class="dropdown-item" href="{% url 'orders' %}">My Orders</a>
+                                {% endif %}
+                                <a class="dropdown-item" href="#">Contact Us</a>
+                                <!-- <div class="dropdown-divider"></div> -->
+                                <a class="dropdown-item" href="#">Privacy Policy</a>
+                            </div>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href=" {% url 'actual_cart' %} ">Cart</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="{% url 'login' %}">Signup & Login</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                   
+                </div>
+            </div>
+        </nav>
+        <p class="" style="margin-top: 100px;"></p>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock content %}
+        
+        <footer class="footer mt-5 py-3 text-white bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <span class="text-muted" style="display: block;">ABOUT</span>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Help</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Contact Us</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">About Us</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Press</a>
+                    </div>
+                    <div class="col">
+                        <span class="text-muted" style="display: block;">HELP</span>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Payments</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Shipping</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Cancellation & Returns</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">FAQ</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Report Infringement</a>
+                    </div>
+                    <div class="col">
+                        <span class="text-muted" style="display: block;">POLICY</span>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Return Policy</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Terms of Use</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Security</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Privacy</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">EPR Compliance</a>
+                    </div>
+                    <div class="col">
+                        <span class="text-muted" style="display: block;">SOCIAL</span>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Facebook</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">Twitter</a>
+                        <a href="#" class="text-decoration-none text-white link-remove-decoration">YouTube</a>
+                    </div>                                        
+                </div>
+            </div>
+        </footer>   
+    </body>
+</html>

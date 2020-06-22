@@ -1,0 +1,24 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-dark btn-lg mb-4"><a href=" {% url 'bill' 0 %} " style="color: white; text-decoration: none;">BUY CART</a></button>
+        </div>
+        
+        {% for item in cart_items %}
+            <a href=" {% url 'book_info_page' item.book_title.id %}" style="text-decoration: none; color: black;">
+                <div class="card mb-3">
+                    <div class="row card-body">
+                        <div class="col-2">
+                            <img src=" {{ item.book_title.book_image.url }} " style="width: 100px; height: 100px;">
+                        </div>
+                        <div class="col">
+                            <h2>{{ item.book_title.title }}</h2>
+                            <h5>{{ item.book_title.language }}, {{ item.book_title.bookformat }}, {{ item.book_title.author }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock content %}

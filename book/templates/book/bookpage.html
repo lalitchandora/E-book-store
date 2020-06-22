@@ -1,0 +1,86 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <div class="container card border border-dark">
+        <div class="row card-body">
+            <img class="col-3 p-3 ml-3 mt-3" src="{{ details.book_image.url }}" alt="Book Image" style="width: 300px; height: 400px;">
+            <div class="col p-3 mr-3 mt-3 ">
+                <h2 class="font-weight-light">{{ details.title }} ({{ details.language }}, {{ details.bookformat }}, {{ details.author }})</h2>
+                <br><br>
+                <h3>
+                    ₹{{ details.price}}
+                    <small class="text-secondary">
+                        <del id="discount">{{ discount }}</del>
+                        
+                    </small>
+                </h3> 
+                <h4 class="text-success"><em>Discounted Price!</em></h4>
+                <br><br><br>
+                <button class="btn btn-warning btn-lg mr-5" style="width: 250px;">
+                    <i class="fas fa-shopping-cart" style="color: white;"></i>
+                    <a href="{% url 'cart' details.id %}" style="color: white; text-decoration: none;">ADD TO CART</a>
+                </button>
+                <button class="btn btn-success btn-lg" style="width: 250px;">
+                    <i class="fas fa-bolt"></i>
+                    <a href="{% url 'bill' details.id %}" style="color: white; text-decoration: none;">BUY NOW</a>
+                </button>
+
+            </div>
+
+
+        </div>
+        <li class="dropdown-divider border-secondary"></li>
+        <div class="card-body">
+        
+            <div class="row mb-3">
+                <div class="col-2">
+                    <h5 class="font-weight-bold">Genre: </h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-secondary">{{ details.genre }} </h5>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <h5 class="font-weight-bold">Language: </h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-secondary">{{ details.language }}</h5>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <h5 class="font-weight-bold">Book Format: </h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-secondary">{{ details.bookformat }}</h5>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-2">
+                    <h5 class="font-weight-bold">Pages: </h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-secondary">{{ details.page }}</h5>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <h5 class="font-weight-bold">Author: </h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-secondary">{{ details.author }}</h5>
+                </div>
+            </div>            
+            <div class="row mb-3">
+                <div class="col-2">
+                    <h5 class="font-weight-bold">Book Description: </h5>
+                </div>
+                <div class="col">
+                    <h5 class="text-secondary text-justify pt-1 pr-5">{{ details.description }}</h5>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}

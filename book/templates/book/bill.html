@@ -1,0 +1,54 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <div class="container">        
+        <div class="card mb-3">
+            <!-- <div class="row card-body">
+                <div class="col-2">
+                    <img src=" {{ item.book_title.book_image.url }} " style="width: 100px; height: 100px;">
+                </div>
+                <div class="col">
+                    <h2>{{ item.book_title.title }}</h2>
+                    <h5>{{ item.book_title.language }}, {{ item.book_title.bookformat }}, {{ item.book_title.author }}</h5>
+                </div>
+            </div> -->
+            <div class="card-body">
+                <h1 class="text-center display-4">Billing Page</h1><br><br>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <h4><strong>Item name</strong> <br></h4>
+                    </div>
+                    <div class="col text-center">
+                        <h4><strong>Item price </strong><br></h4>
+                    </div>
+                </div>
+                {% for a in bill %}
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            {% if a.book_title.title %}
+                                <h4>{{ a.book_title.title }} <br> </h4>
+                            {% else %}
+                            <h4>{{ a.title }} <br> </h4>
+                            {% endif %}
+                        </div>
+                        <div class="col-6 text-center">
+                            {% if a.book_title.price %}
+                                <h4>{{ a.book_title.price }} <br> </h4>
+                            {% else %}
+                            <h4>{{ a.price }} <br> </h4>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <li class="dropdown-divider border-dark"></li>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <h4><strong>Total Price: </strong> <br></h4>
+                    </div>
+                    <div class="col text-center">
+                        <h4><strong> {{ sum }} </strong><br></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
