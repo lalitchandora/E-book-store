@@ -2,6 +2,9 @@
 
 This is a web application for E-book-store. It has almost all the features of a electronic store.
 
+![Image file of the web app](https://github.com/lalitchandora/E-book-store/blob/master/screenshot/site.png)
+![Image file of the web app](https://github.com/lalitchandora/E-book-store/blob/master/screenshot/site2.png)
+![Image file of the web app](https://github.com/lalitchandora/E-book-store/blob/master/screenshot/site3.png)
 
 
 
